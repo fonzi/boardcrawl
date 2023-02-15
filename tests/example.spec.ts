@@ -25,7 +25,7 @@ async function getRemotiveJobs(page: any, url: string) {
   const lstJobs: headers[] = [];
   for (const job in jobs) {
     const text = await jobs[job].innerText();
-    const title = text.split("\n")[0];
+    const title = text.split("\n")[0].substring(0, 30);
     const location = await jobs[job].locator(".left-tag").innerText();
     let locationText: any;
     try {
