@@ -17,6 +17,13 @@ test('Get Remotive.com Devops Jobs', async ({ page }) => {
   console.log("================================================");
 });
 
+test('Get Remotive.com Software Dev Jobs', async ({ page }) => {
+  const lstJobs = await getRemotiveJobs(page, 'https://remotive.com/remote-jobs/software-dev');
+  console.log("=================REMOTIVE JOBS=================");
+  console.table(lstJobs);
+  console.log("================================================");
+});
+
 async function getRemotiveJobs(page: any, url: string) {
   await page.goto(url);
   const jobs = await page.locator(".job-tile").all();
