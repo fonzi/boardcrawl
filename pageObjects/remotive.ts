@@ -1,6 +1,5 @@
 import { expect, test, Locator, type Page } from '@playwright/test'
-const { countryCodeEmoji, emojiCountryCode } = require('country-code-emoji');
-
+const { emojiCountryCode } = require('country-code-emoji');
 
 export default class Remotive {
 
