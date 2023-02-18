@@ -11,20 +11,17 @@ test('Get Remotive.com QA Jobs', async ({ page }) => {
   const lstJobs = await remotive.getRemotiveJobs('https://remotive.com/remote-jobs/qa');
   console.log("=================REMOTIVE JOBS=================");
   console.table(lstJobs);
-  console.log("================================================");
 });
 
 test('Get Remotive.com Devops Jobs', async ({ page }) => {
   const lstJobs = await remotive.getRemotiveJobs('https://remotive.com/remote-jobs/devops');
   console.log("=================REMOTIVE JOBS=================");
   console.table(lstJobs);
-  console.log("================================================");
 });
 
 test('Get Remotive.com Software Dev Jobs', async ({ page }) => {
   const lstJobs = await remotive.getRemotiveJobs('https://remotive.com/remote-jobs/software-dev');
   console.log("=================REMOTIVE JOBS=================");
   console.table(lstJobs);
-  console.log("================================================");
 });
 
