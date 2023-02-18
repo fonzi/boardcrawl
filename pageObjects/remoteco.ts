@@ -10,7 +10,7 @@ export default class Remoteco {
 
     // todo: convert to JSON and return to table 
     public async getRemotecoJobs(url: string) {
-        await this.page.goto(url);
+        await this.page.goto(url, {timeout: 60000});
         const noGutterRows = await this.page.locator(this.noGutterSelector).all();
         const lstJobs: headers[] = [];
         for(const row in noGutterRows) {
