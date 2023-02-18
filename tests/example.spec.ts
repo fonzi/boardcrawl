@@ -1,9 +1,15 @@
 import { test, expect } from '@playwright/test';
-const { countryCodeEmoji, emojiCountryCode } = require('country-code-emoji');
+import Remotive from '../pageObjects/remotive';
 
+let remotive: Remotive;
+
+test.beforeEach(async ({ page }) => {
+  remotive = new Remotive(page);
+});
 
 test('Get Remotive.com QA Jobs', async ({ page }) => {
-  const lstJobs = await getRemotiveJobs(page, 'https://remotive.com/remote-jobs/qa');
+  //remotive = new Remotive(page);
+  const lstJobs = await remotive.getRemotiveJobs('https://remotive.com/remote-jobs/qa');
   console.log("=================REMOTIVE JOBS=================");
   console.table(lstJobs);
   console.log("================================================");
@@ -11,48 +17,20 @@ test('Get Remotive.com QA Jobs', async ({ page }) => {
 
 
 test('Get Remotive.com Devops Jobs', async ({ page }) => {
-  const lstJobs = await getRemotiveJobs(page, 'https://remotive.com/remote-jobs/devops');
+  //remotive = new Remotive(page);
+
+  const lstJobs = await remotive.getRemotiveJobs('https://remotive.com/remote-jobs/devops');
   console.log("=================REMOTIVE JOBS=================");
   console.table(lstJobs);
   console.log("================================================");
 });
 
 test('Get Remotive.com Software Dev Jobs', async ({ page }) => {
-  const lstJobs = await getRemotiveJobs(page, 'https://remotive.com/remote-jobs/software-dev');
+  //remotive = new Remotive(page);
+
+  const lstJobs = await remotive.getRemotiveJobs('https://remotive.com/remote-jobs/software-dev');
   console.log("=================REMOTIVE JOBS=================");
   console.table(lstJobs);
   console.log("================================================");
 });
 
-async function getRemotiveJobs(page: any, url: string) {
-  await page.goto(url);
-  const jobs = await page.locator(".job-tile").all();
-  let current = 0;
-  let max = 20;
-  const lstJobs: headers[] = [];
-  for (const job in jobs) {
-    const text = await jobs[job].innerText();
-    const title = text.split("\n")[0].substring(0, 30);
-    const location = await jobs[job].locator(".left-tag").innerText();
-    let locationText: any;
-    try {
-      locationText = emojiCountryCode(location.split("\n")[0]);
-    } catch (e) {
-      locationText = location.split("\n")[0].toString();
-    }
-    await jobs[job].hover();
-    const moreInfo = await jobs[job].locator("a").nth(3).getAttribute("href");
-    const time = await jobs[job].locator(".tw-w-auto").innerText();
-    lstJobs.push({ title: title, location: locationText, date: time, moreInfo: moreInfo });
-    current++;
-    if (current == max) break;
-  }
-  return lstJobs;
-}
-
-interface headers {
-  title: string;
-  location: string;
-  date: string;
-  moreInfo: any;
-}
