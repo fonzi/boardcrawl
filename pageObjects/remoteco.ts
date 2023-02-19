@@ -1,5 +1,6 @@
 import { expect, test, Locator, type Page } from '@playwright/test'
 
+
 export default class Remoteco {
 
     readonly noGutterSelector = ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom";
@@ -21,6 +22,8 @@ export default class Remoteco {
             const moreInfo = await noGutterRows[row].getAttribute("href");
             lstJobs.push({ title: title, company: company, date: date, moreInfo: "https://remote.co"+ moreInfo });
         }
+        console.log(JSON.stringify(lstJobs));
+
         return lstJobs;
     }
 }

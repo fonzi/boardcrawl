@@ -1,0 +1,112 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    th {
+        color: #fff;
+    }
+</style>
+
+
+<table class="table table-striped">
+    <tr class="bg-info">
+        <th>Title</th>
+        <th>Company</th>
+        <th>Date</th>
+        <th>More Info</th>
+    </tr>
+
+    <tbody id="myTable">
+
+    </tbody>
+</table>
+
+<script>
+    var myArray = [
+        {
+            "title": "Senior Associate, Quality Assurance Analyst",
+            "company": "Nutrafol",
+            "date": "20 hours ago",
+            "moreInfo": "https://remote.co/job/senior-associate-quality-assurance-analyst-17/"
+        },
+        {
+            "title": "Quality Engineer II",
+            "company": "Khoros",
+            "date": "3 days ago",
+            "moreInfo": "https://remote.co/job/quality-engineer-ii-15/"
+        },
+        {
+            "title": "QA Lead",
+            "company": "That's",
+            "date": "4 days ago",
+            "moreInfo": "https://remote.co/job/qa-lead-14/"
+        },
+        {
+            "title": "Senior Quality Engineer",
+            "company": "Chegg",
+            "date": "1 week ago",
+            "moreInfo": "https://remote.co/job/senior-quality-engineer-8-2/"
+        },
+        {
+            "title": "QA Expert",
+            "company": "Paramo",
+            "date": "2 weeks ago",
+            "moreInfo": "https://remote.co/job/qa-expert-7/"
+        },
+        {
+            "title": "Software QA Engineer",
+            "company": "Paymentology",
+            "date": "2 weeks ago",
+            "moreInfo": "https://remote.co/job/software-qa-engineer-6/"
+        },
+        {
+            "title": "Senior Quality Assurance Engineer",
+            "company": "Citizens",
+            "date": "2 weeks ago",
+            "moreInfo": "https://remote.co/job/senior-quality-assurance-engineer-6-2/"
+        },
+        {
+            "title": "Quality Assurance Manager, Audit",
+            "company": "Medable",
+            "date": "2 weeks ago",
+            "moreInfo": "https://remote.co/job/quality-assurance-manager-audit-3/"
+        },
+        {
+            "title": "Staff Software Engineer, Content Quality",
+            "company": "Pinterest",
+            "date": "2 weeks ago",
+            "moreInfo": "https://remote.co/job/staff-software-engineer-content-quality-2/"
+        },
+        {
+            "title": "Manager of Quality Assurance",
+            "company": "Doctors",
+            "date": "3 weeks ago",
+            "moreInfo": "https://remote.co/job/manager-of-quality-assurance-31/"
+        },
+        {
+            "title": "Data Quality Analyst",
+            "company": "Experian",
+            "date": "3 weeks ago",
+            "moreInfo": "https://remote.co/job/data-quality-analyst-27/"
+        }
+    ]
+
+    buildTable(myArray)
+
+    function buildTable(data) {
+        var table = document.getElementById('myTable')
+
+        for (var i = 0; i < data.length; i++) {
+            var row = `<tr>
+							<td>${data[i].title}</td>
+							<td>${data[i].company}</td>
+							<td>${data[i].date}</td>
+                            <td><a href="${data[i].moreInfo}">${data[i].moreInfo}</a></td>
+					  </tr>`
+            table.innerHTML += row
+        }
+    }
+
+</script>
