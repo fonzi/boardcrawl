@@ -23,7 +23,6 @@ export default class Remoteco {
             lstJobs.push({ title: title, company: company, date: date, moreInfo: "https://remote.co"+ moreInfo });
         }
         console.log(JSON.stringify(lstJobs));
-
         return lstJobs;
     }
 }
@@ -34,8 +33,3 @@ interface headers {
     date: string;
     moreInfo: any;
 }
-
-//   title: string;
-//   location: string;
-//   date: string;
-//   moreInfo: any;
